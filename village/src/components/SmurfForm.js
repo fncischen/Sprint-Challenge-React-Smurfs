@@ -39,8 +39,8 @@ class SmurfForm extends Component {
     console.log(this.state.selected_id);
         axios     
         .put(`http://localhost:3333/smurfs/${this.state.selected_id}`,
-        {age: this.state.age,
-        email: this.state.height})
+        {age: this.state.updatedAge,
+        height: this.state.updatedHeight})
         .then(response => {
             console.log(response.data)
          })
@@ -51,6 +51,7 @@ class SmurfForm extends Component {
 
   handleInputChange = e => {
     this.setState({ [e.target.name]: e.target.value });
+    console.log(this.state);
   };
 
   render() {
@@ -90,7 +91,7 @@ class SmurfForm extends Component {
 
           <form onSubmit={this.updateSmurf}>
 
-            <select name="selected_id" onChange={this.handleInputChanges}>
+            <select name="selected_id" onChange={this.handleInputChange}>
 
               {this.props.smurfsList.map(smurf => 
                   <option name="selected_id" value={smurf.id}>{smurf.name}</option>
