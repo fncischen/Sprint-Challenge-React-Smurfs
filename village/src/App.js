@@ -38,11 +38,13 @@ class App extends Component {
     console.log(this.state.smurfs);
   }
 
-  createSmurfComponent(selected_id) {
+  createSmurfComponent = props => {
 
-    let selectedSmurf = this.state.smurfs.filter(smurf => smurf.id == selected_id);
+    let selected_id = props.match.params.id; 
 
-    return 
+    let selectedSmurf = this.state.smurfs.filter(smurf => smurf.id === selected_id);
+    console.log(selectedSmurf);
+    return(
     <Smurf 
     name={selectedSmurf.name}
     id={selected_id}
@@ -50,7 +52,7 @@ class App extends Component {
     height={selectedSmurf.height}
     key={selected_id}
     deleteSmurf={this.deleteSmurf} 
-    />;
+    />);
 
   }
 
@@ -75,7 +77,7 @@ class App extends Component {
      
      }
 
-        <Route path="/smurfs/:id" render={this.createSmurfComponent(id)}/>}/>
+        <Route path="/smurfs/:id" render={props => this.createSmurfComponent(props)}/>
       </div>
     );
   }
