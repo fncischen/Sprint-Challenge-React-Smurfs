@@ -6,7 +6,9 @@ import SmurfForm from './components/SmurfForm';
 import Smurfs from './components/Smurfs';
 
 import { Route } from 'react-router-dom';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+
 
 class App extends Component {
   constructor(props) {
@@ -29,8 +31,10 @@ class App extends Component {
     return (
       <div className="App">
 
-        <Link to="/">Smurfs</Link>
-        <Link to="/form">Add Smurfs</Link>
+        <NavLink exact to="/" activeClassName="selected" activeStyle={{
+          fontWeight: "bold", color: "purple" 
+        }}>Smurfs</NavLink>
+        <NavLink to="/form">Add Smurfs</NavLink>
 
         <Route exact path="/" render={() => <Smurfs smurfs={this.state.smurfs}/>}/>
         <Route path="/form" component={SmurfForm} />
