@@ -38,24 +38,6 @@ class App extends Component {
     console.log(this.state.smurfs);
   }
 
-  createSmurfComponent = props => {
-
-    let selected_id = props.match.params.id; 
-
-    let selectedSmurf = this.state.smurfs.filter(smurf => smurf.id === selected_id);
-    console.log(selectedSmurf);
-    return(
-    <Smurf 
-    name={selectedSmurf.name}
-    id={selected_id}
-    age={selectedSmurf.age}
-    height={selectedSmurf.height}
-    key={selected_id}
-    deleteSmurf={this.deleteSmurf} 
-    />);
-
-  }
-
   render() {
     return (
       <div className="App">
@@ -77,7 +59,15 @@ class App extends Component {
      
      }
 
-        <Route path="/smurfs/:id" render={props => this.createSmurfComponent(props)}/>
+        <Route path="/smurfs/:id" render={props =>  <Smurf {...props}
+          name={this.state.smurfs.find(smurf => smurf.id == props.match.params.id)}
+          id={props.match.params.id}
+          age={this.state.smurfs.find(smurf => smurf.id == props.match.params.id)}
+          height={this.state.smurfs.find(smurf => smurf.id == props.match.params.id)}
+          key={props.match.params.id}
+          deleteSmurf={this.deleteSmurf} 
+          />
+        }/>
       </div>
     );
   }
