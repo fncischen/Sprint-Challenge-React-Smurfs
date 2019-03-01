@@ -55,6 +55,8 @@ class App extends Component {
 
       refactoring 
 
+      https://stackoverflow.com/questions/12462318/find-a-value-in-an-array-of-objects-in-javascript
+
       */
      
      }
