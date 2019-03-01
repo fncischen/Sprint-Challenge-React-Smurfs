@@ -62,12 +62,12 @@ class App extends Component {
      }
 
         <Route path="/smurfs/:id" render={props =>  <Smurf {...props}
-          name={this.state.smurfs.find(smurf => smurf.id == props.match.params.id)}
-          id={props.match.params.id}
-          age={this.state.smurfs.find(smurf => smurf.id == props.match.params.id)}
-          height={this.state.smurfs.find(smurf => smurf.id == props.match.params.id)}
-          key={props.match.params.id}
-          deleteSmurf={this.deleteSmurf} 
+          // name={this.state.smurfs.find(smurf => smurf.id == props.match.params.id)}
+          // id={props.match.params.id}
+          // age={this.state.smurfs.find(smurf => smurf.id == props.match.params.id)}
+          // height={this.state.smurfs.find(smurf => smurf.id == props.match.params.id)}
+          // key={props.match.params.id}
+          // deleteSmurf={this.deleteSmurf} 
           />
         }/>
       </div>
