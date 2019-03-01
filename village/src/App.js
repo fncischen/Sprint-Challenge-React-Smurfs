@@ -48,6 +48,14 @@ class App extends Component {
 
         <Route exact path="/" render={() => <Smurfs smurfs={this.state.smurfs} deleteSmurf={this.deleteSmurf}/>}/>
         <Route path="/form" render={() => <SmurfForm smurfsList={this.state.smurfs}/>} />
+
+      {/* 
+      see : https://reacttraining.com/react-router/web/api/Route/render-func
+      */
+     
+     // lots of refactoring}
+
+        <Route path="/smurfs/:id" render={() => <Smurf smurf={this.state.smurfs.filter(smurf => smurf.id == this.props.params.match.id)}/>}/>
       </div>
     );
   }
