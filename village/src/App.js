@@ -34,6 +34,7 @@ class App extends Component {
       .then(response => this.setState({smurfs: response.data}))
       .catch(err => console.log(err));
 
+    console.log(this.state.smurfs);
   }
 
   render() {
@@ -46,7 +47,7 @@ class App extends Component {
         <NavLink to="/form">Add Smurfs</NavLink>
 
         <Route exact path="/" render={() => <Smurfs smurfs={this.state.smurfs} deleteSmurf={this.deleteSmurf}/>}/>
-        <Route path="/form" component={SmurfForm} />
+        <Route path="/form" render={() => <SmurfForm smurfsList={this.state.smurfs}/>} />
       </div>
     );
   }
