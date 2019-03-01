@@ -4,6 +4,7 @@ import axios from 'axios';
 import './App.css';
 import SmurfForm from './components/SmurfForm';
 import Smurfs from './components/Smurfs';
+import Smurf from './components/Smurf';
 
 import { Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -37,6 +38,22 @@ class App extends Component {
     console.log(this.state.smurfs);
   }
 
+  createSmurfComponent(selected_id) {
+
+    let selectedSmurf = this.state.smurfs.filter(smurf => smurf.id == selected_id);
+
+    return 
+    <Smurf 
+    name={selectedSmurf.name}
+    id={selected_id}
+    age={selectedSmurf.age}
+    height={selectedSmurf.height}
+    key={selected_id}
+    deleteSmurf={this.deleteSmurf} 
+    />;
+
+  }
+
   render() {
     return (
       <div className="App">
@@ -51,11 +68,14 @@ class App extends Component {
 
       {/* 
       see : https://reacttraining.com/react-router/web/api/Route/render-func
+
+      refactoring 
+
       */
      
-     // lots of refactoring}
+     }
 
-        <Route path="/smurfs/:id" render={() => <Smurf smurf={this.state.smurfs.filter(smurf => smurf.id == this.props.params.match.id)}/>}/>
+        <Route path="/smurfs/:id" render={this.createSmurfComponent(id)}/>}/>
       </div>
     );
   }
